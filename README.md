@@ -10,24 +10,49 @@ The core design principle is:
 
 > Reduce unnecessary time and effort without removing the landlord's control over a valuable asset.
 
+## What changed in v2
+
+The second prototype iteration brings the UI closer to HousingAnywhere's current public visual language and integrates the project research directly into the experience.
+
+### Research-led design decisions
+
+- **Value before effort** — the landlord sees the relevant benefits before entering data.
+- **Segment early** — the flow identifies the small private-investor profile immediately.
+- **Digital verification by default** — routine verification replaces the mandatory account-manager call in the current process.
+- **Interactive policy education** — four key rules are explained with their purpose and a short comprehension scenario.
+- **Progressive listing creation** — property, media, pricing and screening are split into manageable stages.
+- **Media coaching** — transparency is translated into practical guidance for a listing that can replace a physical viewing.
+- **Transparent fee explanation** — commission logic is visible before publication.
+- **Landlord-controlled screening** — the platform structures documents and information while the landlord keeps the final decision.
+- **Automated readiness check** — routine completeness and compliance checks are designed to happen before publication.
+- **Exception-based human support** — staff intervention remains available when needed rather than being mandatory for every landlord.
+- **Save and continue later** — prototype progress is saved locally in the browser.
+- **Design-notes mode** — presentation mode can show the research rationale behind each screen.
+
 ## Prototype flow
 
-1. Account & landlord identification
+1. Private-investor profile
 2. Digital verification
 3. Interactive platform rules
 4. Property details
 5. Media & listing transparency
 6. Pricing & availability
 7. Tenant requirements & screening
-8. Listing preview & compliance check
+8. Listing preview & readiness check
 9. Publish & next steps
 
-## Key platform rules included
+## Key platform rules represented
 
-- Communication remains on-platform
+- Communication and booking remain on-platform
 - No physical viewings
 - Listings must accurately represent the property
-- Tenant payment is handled securely through the platform and payout follows the move-in protection period
+- The first payment is handled through the secure booking flow and landlord payout follows the move-in protection period
+
+## Demo mode
+
+On the welcome screen, choose **Try demo profile** to pre-fill a fictional two-property private investor.
+
+Use **Show design notes** in the header to switch from a realistic landlord experience to a presentation mode that explains why each proposed design decision exists.
 
 ## Run locally
 
@@ -39,22 +64,19 @@ python3 -m http.server 8000
 
 Then open `http://localhost:8000`.
 
-You can also open `index.html` directly in a browser, although using a small local server is recommended.
-
 ## GitHub Pages
 
-Because the prototype is static HTML/CSS/JavaScript, it can be hosted directly with GitHub Pages.
+This is a static HTML/CSS/JavaScript prototype and can be hosted from the repository root using GitHub Pages.
 
-1. Push the repository to GitHub.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment**, choose **Deploy from a branch**.
-4. Select the default branch and `/ (root)`.
-5. Save.
+## Source basis
 
-## Demo mode
+The prototype is grounded in:
 
-The welcome screen includes **Load demo profile**, which pre-fills a fictional private-investor example so the complete flow can be demonstrated quickly.
+- the HousingAnywhere landlord-process material supplied for the VU project;
+- the Challenge 2 requirements and private-investor persona;
+- the Week 2 and Week 3 research completed for the project;
+- current public HousingAnywhere information on landlord verification, secure payments, fees and platform scale.
 
 ## Important
 
-This is an educational concept prototype and is not a live HousingAnywhere service. Some UX elements, automated checks and verification actions are simulated to demonstrate the proposed future-state journey.
+This is an educational concept prototype and is not a live HousingAnywhere service. Verification, automated compliance checks, media coaching and other interactions are simulated to demonstrate the proposed future-state journey.
