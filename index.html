@@ -3,18 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Educational prototype of a low-touch HousingAnywhere onboarding journey for private investors." />
+  <meta name="description" content="Educational prototype of a scalable HousingAnywhere onboarding journey for private investors." />
   <title>HousingAnywhere — Private Investor Onboarding Prototype</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="topbar">
     <a class="brand" href="#" aria-label="HousingAnywhere prototype home">
-      <span class="brand-mark">H</span>
-      <span>HousingAnywhere</span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="img">
+          <path d="M6 18.2 20 7l14 11.2v14.3a2.5 2.5 0 0 1-2.5 2.5h-23A2.5 2.5 0 0 1 6 32.5V18.2Z" fill="currentColor"/>
+          <path d="M15 35V24h10v11" fill="#fff"/>
+        </svg>
+      </span>
+      <span class="brand-name">Housing<span>Anywhere</span></span>
+      <span class="prototype-label">Prototype</span>
     </a>
+
     <div class="top-actions">
-      <span class="prototype-badge">Educational prototype</span>
+      <button class="text-button" id="notesBtn" type="button" aria-pressed="false">Show design notes</button>
+      <button class="help-button" id="helpBtn" type="button">Need help?</button>
       <button class="text-button" id="saveExitBtn" type="button">Save & exit</button>
     </div>
   </header>
@@ -22,14 +30,24 @@
   <main class="shell">
     <aside class="sidebar" aria-label="Onboarding progress">
       <div class="sidebar-copy">
-        <p class="eyebrow">Private investor onboarding</p>
-        <h1>List your property with confidence.</h1>
-        <p>Reach international tenants while keeping control over who rents your property.</p>
+        <p class="eyebrow">Private landlord onboarding</p>
+        <h1>List your property.</h1>
+        <p>Reach international tenants, screen with confidence and keep the final decision in your hands.</p>
       </div>
+
+      <div class="progress-meta">
+        <span id="progressMeta">About 7 minutes</span>
+        <span>Autosaved</span>
+      </div>
+
       <ol id="progressList" class="progress-list"></ol>
+
       <div class="trust-card">
-        <strong>You stay in control.</strong>
-        <p>HousingAnywhere supports the process. You decide your price, availability, requirements and final tenant.</p>
+        <div class="trust-icon">✓</div>
+        <div>
+          <strong>You stay in control</strong>
+          <p>You set the rent, availability and tenant requirements. No tenant is accepted automatically.</p>
+        </div>
       </div>
     </aside>
 
@@ -50,6 +68,16 @@
     <span>VU Amsterdam · Introduction to E-Business & Online Commerce</span>
     <span>Concept prototype — not a live HousingAnywhere service</span>
   </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <dialog id="helpDialog">
+    <button class="dialog-close" id="closeHelpBtn" aria-label="Close">×</button>
+    <p class="eyebrow">Low-touch, not no-touch</p>
+    <h2>Need a hand?</h2>
+    <p>This prototype keeps routine onboarding self-service. Human support is available when something is unclear or an exception needs review.</p>
+    <button class="btn btn-primary" id="closeHelpPrimary" type="button">Continue onboarding</button>
+  </dialog>
 
   <script src="app.js"></script>
 </body>
