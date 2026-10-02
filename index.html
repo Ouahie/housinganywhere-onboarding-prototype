@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Educational prototype of a scalable HousingAnywhere onboarding journey for private investors." />
-  <title>HousingAnywhere — Private Investor Onboarding Prototype</title>
+  <meta name="description" content="HousingAnywhere concept landing page for private investors with 1–12 rental properties." />
+  <title>HousingAnywhere — Rent out your property without the second job</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="HousingAnywhere prototype home">
+<body class="landing-page">
+  <header class="landing-nav">
+    <a class="brand" href="index.html" aria-label="HousingAnywhere prototype home">
       <span class="brand-mark" aria-hidden="true">
         <svg viewBox="0 0 44 40" role="img">
           <path d="M4 30.5c4.8-11.8 10.8-17.7 18-17.7s13.2 5.9 18 17.7" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/>
@@ -17,68 +17,290 @@
         </svg>
       </span>
       <span class="brand-name">HousingAnywhere</span>
-      <span class="prototype-label">Prototype</span>
+      <span class="prototype-label">Concept</span>
     </a>
-
-    <div class="top-actions">
-      <button class="text-button" id="notesBtn" type="button" aria-pressed="false">Show design notes</button>
-      <button class="help-button" id="helpBtn" type="button">Need help?</button>
-      <button class="text-button" id="saveExitBtn" type="button">Save & exit</button>
+    <nav class="landing-links" aria-label="Main navigation">
+      <a href="#why">Why it works</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="landing-nav-actions">
+      <a class="btn btn-ghost btn-small" href="onboarding.html">Preview onboarding</a>
+      <a class="btn btn-primary btn-small" href="onboarding.html">List my property</a>
     </div>
   </header>
 
-  <main class="shell">
-    <aside class="sidebar" aria-label="Onboarding progress">
-      <div class="sidebar-copy">
-        <p class="eyebrow">Private landlord onboarding</p>
-        <h1>List your property.</h1>
-        <p>Reach international tenants, screen with confidence and keep the final decision in your hands.</p>
-      </div>
+  <main>
+    <section class="landing-hero">
+      <div class="landing-container landing-hero-grid">
+        <div class="landing-hero-copy">
+          <span class="audience-badge">For private investors with 1–12 properties</span>
+          <h1>Your rental property shouldn't become your second job.</h1>
+          <p>Reach international students and professionals, screen applicants digitally, manage the booking online and keep the final tenant decision in your hands.</p>
+          <div class="hero-cta-row">
+            <a class="btn btn-primary btn-large" href="onboarding.html">List my property</a>
+            <a class="btn btn-ghost btn-large" href="#how">See how it works</a>
+          </div>
+          <div class="landing-proof-row">
+            <span>✓ Free to list</span>
+            <span>✓ No physical viewings</span>
+            <span>✓ Secure first payment</span>
+          </div>
+        </div>
 
-      <div class="progress-meta">
-        <span id="progressMeta">About 7 minutes</span>
-        <span>Autosaved</span>
-      </div>
-
-      <ol id="progressList" class="progress-list"></ol>
-
-      <div class="trust-card">
-        <div class="trust-icon">✓</div>
-        <div>
-          <strong>You stay in control</strong>
-          <p>You set the rent, availability and tenant requirements. No tenant is accepted automatically.</p>
+        <div class="investor-dashboard" aria-label="Prototype landlord dashboard">
+          <div class="dashboard-top">
+            <div>
+              <span class="dashboard-kicker">Your property</span>
+              <strong>Amsterdam · 1-bedroom apartment</strong>
+            </div>
+            <span class="live-pill">Live</span>
+          </div>
+          <div class="dashboard-summary">
+            <div><span>Availability</span><strong>1 Nov</strong></div>
+            <div><span>Applicants</span><strong>3</strong></div>
+            <div><span>Rent</span><strong>€1,450</strong></div>
+          </div>
+          <div class="candidate-card featured">
+            <div class="candidate-avatar">SM</div>
+            <div class="candidate-copy">
+              <strong>Sofia M.</strong>
+              <span>Master's student · moving from Milan</span>
+              <div class="candidate-tags">
+                <span>Verified ID</span>
+                <span>Enrolment</span>
+                <span>Income docs</span>
+              </div>
+            </div>
+            <button class="candidate-button" type="button">Review</button>
+          </div>
+          <div class="candidate-card muted-card">
+            <div class="candidate-avatar">JB</div>
+            <div class="candidate-copy">
+              <strong>Jonas B.</strong>
+              <span>Young professional · relocating for work</span>
+            </div>
+            <span class="candidate-status">New</span>
+          </div>
+          <div class="control-banner">
+            <strong>You stay in control.</strong>
+            <span>HousingAnywhere reduces the admin. You decide who rents your property.</span>
+          </div>
         </div>
       </div>
-    </aside>
+    </section>
 
-    <section class="content-panel" aria-live="polite">
-      <div class="mobile-progress">
-        <div>
-          <span id="mobileStepLabel">Step 1 of 9</span>
-          <span id="mobileStepName">Account</span>
+    <section class="landing-section" id="why">
+      <div class="landing-container">
+        <div class="section-heading">
+          <span class="eyebrow">Built for the on-the-side investor</span>
+          <h2>Less admin. More confidence. No loss of control.</h2>
+          <p>You already have a career. Renting out a small portfolio should not require daily calls, repeated viewings and hours of manual screening.</p>
         </div>
-        <div class="mobile-progress-track"><span id="mobileProgressBar"></span></div>
+        <div class="landing-card-grid">
+          <article class="landing-card">
+            <span class="landing-icon">↗</span>
+            <h3>Reach tenants beyond your local network</h3>
+            <p>Put your property in front of international students and professionals who are actively looking for mid-term housing.</p>
+          </article>
+          <article class="landing-card">
+            <span class="landing-icon">✓</span>
+            <h3>Screen before you decide</h3>
+            <p>Review verified profiles and request supporting documents such as ID, income, employment or university enrolment.</p>
+          </article>
+          <article class="landing-card">
+            <span class="landing-icon">⌂</span>
+            <h3>Skip physical viewings</h3>
+            <p>Use a transparent listing with strong photos and clear property information so tenants can decide remotely.</p>
+          </article>
+          <article class="landing-card">
+            <span class="landing-icon">€</span>
+            <h3>Keep payment on-platform</h3>
+            <p>The first payment follows HousingAnywhere's secure booking flow and is released after the move-in protection period.</p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div id="app"></div>
+    <section class="landing-section soft-section" id="how">
+      <div class="landing-container">
+        <div class="section-heading narrow">
+          <span class="eyebrow">A simpler path to your first booking</span>
+          <h2>From vacancy to published listing in one guided flow.</h2>
+          <p>The proposed journey replaces mandatory verbal onboarding with digital verification, interactive rule education and guided listing creation.</p>
+        </div>
+        <div class="journey-steps">
+          <article class="journey-step">
+            <span class="step-number">01</span>
+            <h3>Show us how you rent</h3>
+            <p>We identify your profile early so private investors are not pushed through a professional property-manager flow.</p>
+          </article>
+          <article class="journey-step">
+            <span class="step-number">02</span>
+            <h3>Verify once, digitally</h3>
+            <p>Complete contact, identity and payout checks without waiting for a routine onboarding call.</p>
+          </article>
+          <article class="journey-step">
+            <span class="step-number">03</span>
+            <h3>Learn the platform rules</h3>
+            <p>Understand on-platform communication, remote viewing, listing transparency and secure payout through short interactive guidance.</p>
+          </article>
+          <article class="journey-step">
+            <span class="step-number">04</span>
+            <h3>Build, review and publish</h3>
+            <p>Add property details, media, pricing and tenant requirements. Automated readiness checks flag gaps before you publish.</p>
+          </article>
+        </div>
+        <div class="center-cta">
+          <a class="btn btn-primary btn-large" href="onboarding.html">Try the onboarding prototype</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section">
+      <div class="landing-container control-grid">
+        <div class="control-copy">
+          <span class="eyebrow">Control without the busywork</span>
+          <h2>Automate the low-value work. Keep the high-value decisions.</h2>
+          <p>The platform can structure applications, collect documents, keep communication in one place and surface missing information. The landlord still sets the rent, availability, tenant requirements and final acceptance.</p>
+          <div class="control-list">
+            <div><span>✓</span><strong>You choose who to rent to</strong></div>
+            <div><span>✓</span><strong>You decide what documents matter</strong></div>
+            <div><span>✓</span><strong>You can ask for human support when needed</strong></div>
+          </div>
+        </div>
+        <div class="decision-card">
+          <div class="decision-top">
+            <span>Applicant review</span>
+            <span class="verified-pill">Verified</span>
+          </div>
+          <h3>Sofia M.</h3>
+          <p>Master's student · 7 month stay</p>
+          <dl class="decision-list">
+            <div><dt>Verified identity</dt><dd>Ready</dd></div>
+            <div><dt>University enrolment</dt><dd>Received</dd></div>
+            <div><dt>Proof of income</dt><dd>Received</dd></div>
+            <div><dt>Requested move-in</dt><dd>1 Nov</dd></div>
+          </dl>
+          <div class="decision-actions">
+            <button class="btn btn-ghost" type="button">Message</button>
+            <button class="btn btn-primary" type="button">Accept tenant</button>
+          </div>
+          <small>Prototype example — no tenant is accepted automatically.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section pricing-section" id="pricing">
+      <div class="landing-container pricing-grid">
+        <div class="pricing-copy">
+          <span class="eyebrow">Transparent economics</span>
+          <h2>See the cost before you commit.</h2>
+          <p>Listing is free. Commission is charged after a successful booking and is based on the total contract value. The exact rate depends on property location.</p>
+          <div class="pricing-note">
+            <strong>Standard rates</strong>
+            <span>Netherlands & France: 5% of total contract value. Other markets: standard rate 8%, plus VAT where applicable.</span>
+          </div>
+        </div>
+        <div class="calculator-card">
+          <h3>Estimate your booking</h3>
+          <label>Property location
+            <select id="calcMarket">
+              <option value="0.05">Netherlands or France</option>
+              <option value="0.08">Other market</option>
+            </select>
+          </label>
+          <div class="calculator-two">
+            <label>Monthly rent (€)
+              <input id="calcRent" type="number" min="1" value="1450">
+            </label>
+            <label>Rental period (months)
+              <input id="calcMonths" type="number" min="1" max="24" value="7">
+            </label>
+          </div>
+          <div class="calculator-results">
+            <div><span>Total contract value</span><strong id="calcContract">€10,150</strong></div>
+            <div><span>Estimated commission*</span><strong id="calcFee">€508</strong></div>
+          </div>
+          <small>*Illustration before VAT and any applicable minimum commission. Exact commission is shown in the landlord account.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section rules-section">
+      <div class="landing-container">
+        <div class="section-heading narrow">
+          <span class="eyebrow">Trust is designed into the journey</span>
+          <h2>Four rules make remote renting work.</h2>
+          <p>The landing page does not hide the platform model. It explains what landlords need to know before they spend time creating a listing.</p>
+        </div>
+        <div class="rule-strip">
+          <div><strong>01</strong><span>Keep communication and booking on-platform</span></div>
+          <div><strong>02</strong><span>No physical viewings</span></div>
+          <div><strong>03</strong><span>Listings must be transparent and accurate</span></div>
+          <div><strong>04</strong><span>First payment follows the secure payout flow</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-section faq-section" id="faq">
+      <div class="landing-container faq-grid">
+        <div>
+          <span class="eyebrow">Frequently asked questions</span>
+          <h2>Know what happens before you start.</h2>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>Is it free to publish a listing?</summary>
+            <p>Yes. HousingAnywhere charges commission when you receive a successful booking rather than an upfront listing fee.</p>
+          </details>
+          <details>
+            <summary>Do I lose control over tenant selection?</summary>
+            <p>No. The proposed journey helps collect and structure information, but the landlord keeps the final acceptance decision.</p>
+          </details>
+          <details>
+            <summary>Do I need to arrange physical viewings?</summary>
+            <p>No. HousingAnywhere is designed around remote booking, so transparent property information, photos and videos support the tenant's decision.</p>
+          </details>
+          <details>
+            <summary>When is the first rent paid out?</summary>
+            <p>The first rental payment is held through the secure booking flow and is normally released to the landlord 48 hours after successful move-in.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta-section">
+      <div class="landing-container final-cta-card">
+        <div>
+          <span class="eyebrow">Your property. Your decision. Less admin.</span>
+          <h2>Turn your next vacancy into a digital booking.</h2>
+          <p>Start with a guided listing built specifically for private investors managing property alongside another career.</p>
+        </div>
+        <div class="final-cta-actions">
+          <a class="btn btn-primary btn-large" href="onboarding.html">List my property</a>
+          <span>Free to list · pay on successful booking</span>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <span>VU Amsterdam · Introduction to E-Business & Online Commerce</span>
-    <span>Concept prototype — not a live HousingAnywhere service</span>
+  <footer class="landing-footer">
+    <div class="landing-container footer-grid">
+      <div class="brand footer-brand">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 44 40">
+            <path d="M4 30.5c4.8-11.8 10.8-17.7 18-17.7s13.2 5.9 18 17.7" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/>
+            <path d="M10 30.5h24" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-name">HousingAnywhere</span>
+      </div>
+      <span>Educational concept · VU Amsterdam · not an official HousingAnywhere page</span>
+    </div>
   </footer>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <dialog id="helpDialog">
-    <button class="dialog-close" id="closeHelpBtn" aria-label="Close">×</button>
-    <p class="eyebrow">Low-touch, not no-touch</p>
-    <h2>Need a hand?</h2>
-    <p>This prototype keeps routine onboarding self-service. Human support is available when something is unclear or an exception needs review.</p>
-    <button class="btn btn-primary" id="closeHelpPrimary" type="button">Continue onboarding</button>
-  </dialog>
-
-  <script src="app.js"></script>
+  <script src="landing.js"></script>
 </body>
 </html>
