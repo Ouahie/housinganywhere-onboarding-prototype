@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Educational prototype of a low-touch HousingAnywhere onboarding journey for private investors." />
+  <title>HousingAnywhere — Private Investor Onboarding Prototype</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="HousingAnywhere prototype home">
+      <span class="brand-mark">H</span>
+      <span>HousingAnywhere</span>
+    </a>
+    <div class="top-actions">
+      <span class="prototype-badge">Educational prototype</span>
+      <button class="text-button" id="saveExitBtn" type="button">Save & exit</button>
+    </div>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar" aria-label="Onboarding progress">
+      <div class="sidebar-copy">
+        <p class="eyebrow">Private investor onboarding</p>
+        <h1>List your property with confidence.</h1>
+        <p>Reach international tenants while keeping control over who rents your property.</p>
+      </div>
+      <ol id="progressList" class="progress-list"></ol>
+      <div class="trust-card">
+        <strong>You stay in control.</strong>
+        <p>HousingAnywhere supports the process. You decide your price, availability, requirements and final tenant.</p>
+      </div>
+    </aside>
+
+    <section class="content-panel" aria-live="polite">
+      <div class="mobile-progress">
+        <div>
+          <span id="mobileStepLabel">Step 1 of 9</span>
+          <span id="mobileStepName">Account</span>
+        </div>
+        <div class="mobile-progress-track"><span id="mobileProgressBar"></span></div>
+      </div>
+
+      <div id="app"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>VU Amsterdam · Introduction to E-Business & Online Commerce</span>
+    <span>Concept prototype — not a live HousingAnywhere service</span>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
