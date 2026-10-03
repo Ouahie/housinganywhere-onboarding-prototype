@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Create a HousingAnywhere property listing, reach international tenants and review bookings online." />
-  <title>HousingAnywhere — List your property online</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Find your next home or list your rental property with a guided HousingAnywhere concept experience." />
+  <title>HousingAnywhere — Find a home. Rent out a property.</title>
+  <link rel="stylesheet" href="styles.css?v=3.0" />
 </head>
 <body class="landing-page">
   <header class="landing-nav">
@@ -20,22 +20,28 @@
       <span class="prototype-label">Concept</span>
     </a>
     <nav class="landing-links" aria-label="Main navigation">
-      <a href="#why">Why it works</a>
-      <a href="#how">How it works</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#faq">FAQ</a>
+      <a data-nav="benefits" href="#tenant-benefits">Benefits</a>
+      <a data-nav="journey" href="#tenant-journey">Your journey</a>
+      <a data-nav="costs" href="#tenant-costs">Costs &amp; booking</a>
+      <a data-nav="faq" href="#tenant-faq">Help &amp; answers</a>
     </nav>
     <div class="landing-nav-actions">
-      <a class="btn btn-ghost btn-small" href="onboarding.html">Preview onboarding</a>
+      <button class="btn btn-secondary btn-small account-button" type="button" id="openAccount"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><span>My Account</span></button>
       <a class="btn btn-primary btn-small" href="onboarding.html">List my property</a>
     </div>
   </header>
 
   <main>
     <section class="landing-hero">
+      <div class="landing-container audience-heading">
+        <p>One platform. Your next chapter.</p>
+        <div class="audience-switch" role="group" aria-label="Choose your journey">
+          <button type="button" data-select-audience="tenant" aria-pressed="true">Find a home</button>
+          <button type="button" data-select-audience="landlord" aria-pressed="false">Rent out a property</button>
+        </div>
+      </div>
       <div class="landing-container landing-hero-grid">
-        <div class="landing-hero-copy">
-          <span class="audience-badge">For landlords</span>
+        <div class="landing-hero-copy" data-audience="landlord" hidden>
           <h1>Your rental property shouldn't become your second job.</h1>
           <p>Reach international students and professionals, screen applicants digitally, manage the booking online and keep the final tenant decision in your hands.</p>
           <div class="hero-cta-row">
@@ -49,7 +55,7 @@
           </div>
         </div>
 
-        <div class="landlord-dashboard" aria-label="Illustrative landlord dashboard with sample renter profiles">
+        <div class="landlord-dashboard" data-audience="landlord" hidden aria-label="Illustrative landlord dashboard with sample renter profiles">
           <div class="dashboard-top">
             <div>
               <span class="dashboard-kicker">Your property</span>
@@ -73,7 +79,7 @@
                 <span>Income docs</span>
               </div>
             </div>
-            <button class="candidate-button" type="button">Review</button>
+            <button class="candidate-button" type="button" data-review-profile>Review</button>
           </div>
           <div class="candidate-card muted-card">
             <img class="candidate-avatar" src="assets/renter-jonas.jpg" alt="Illustrative portrait for sample renter Jonas" loading="lazy">
@@ -89,9 +95,27 @@
           </div>
           <p class="dashboard-note">Sofia, Jonas and Alex are fictional example profiles shown for this prototype.</p>
         </div>
+
+        <div class="landing-hero-copy" data-audience="tenant">
+          <h1>A new city.<br>A place to call home.</h1>
+          <p>Find a room, studio or apartment for your next chapter. Explore the details, connect with your landlord and get ready to move — all online.</p>
+          <div class="hero-cta-row">
+            <a class="btn btn-primary btn-large" href="#tenant-homes">Explore homes <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost btn-large" href="#tenant-journey">Plan your move</a>
+          </div>
+          <div class="landing-proof-row"><span>✓ Rooms &amp; apartments</span><span>✓ Book online</span><span>✓ Move-in support</span></div>
+        </div>
+        <div class="tenant-home-preview" data-audience="tenant">
+          <div class="preview-image-wrap"><img src="assets/bedroom-example.jpg" alt="Bright bedroom with large windows and a comfortable double bed"><span class="home-example-pill">Example home</span><button class="save-home" type="button" data-save-home="amsterdam" aria-label="Save Amsterdam example home" aria-pressed="false">♡</button></div>
+          <div class="preview-home-copy"><div><span class="dashboard-kicker">Amsterdam · Apartment</span><h2>Your next chapter starts here.</h2></div><strong>€1,450<small>/month</small></strong></div>
+          <div class="preview-home-features"><span>1 bedroom</span><span>Furnished</span><span>Bright &amp; spacious</span></div>
+          <div class="moving-story"><img src="assets/renter-sofia.jpg" alt="Illustrative portrait for sample tenant Sofia"><div><strong>Sofia is planning her semester in Amsterdam.</strong><span>Your own home search can start here too.</span></div></div>
+          <p class="dashboard-note">Illustrative property and fictional renter. Explore sample homes below.</p>
+        </div>
       </div>
     </section>
 
+    <div data-audience="landlord" hidden>
     <section class="landing-section" id="why">
       <div class="landing-container">
         <div class="section-heading">
@@ -129,7 +153,7 @@
         <div class="section-heading narrow">
           <span class="eyebrow">A simpler path to your first booking</span>
           <h2>From vacancy to published listing in one guided flow.</h2>
-          <p>The proposed journey replaces mandatory verbal onboarding with digital verification, interactive rule education and guided listing creation.</p>
+          <p>Set up your account, add the details that make your home stand out, and review everything before your listing goes live.</p>
         </div>
         <div class="journey-steps">
           <article class="journey-step">
@@ -154,7 +178,7 @@
           </article>
         </div>
         <div class="center-cta">
-          <a class="btn btn-primary btn-large" href="onboarding.html">Try the onboarding prototype</a>
+          <a class="btn btn-primary btn-large" href="onboarding.html">Start your listing</a>
         </div>
       </div>
     </section>
@@ -163,8 +187,8 @@
       <div class="landing-container control-grid">
         <div class="control-copy">
           <span class="eyebrow">Control without the busywork</span>
-          <h2>Automate the low-value work. Keep the high-value decisions.</h2>
-          <p>The platform can structure applications, collect documents, keep communication in one place and surface missing information. The landlord still sets the rent, availability, tenant requirements and final acceptance.</p>
+          <h2>Less paperwork. More room for the right tenant.</h2>
+          <p>Keep applications, supporting documents and conversations together. You choose the rent, availability and requirements, then decide who gets to call your property home.</p>
           <div class="control-list">
             <div><span>✓</span><strong>You choose who to rent to</strong></div>
             <div><span>✓</span><strong>You decide what documents matter</strong></div>
@@ -185,8 +209,8 @@
             <div><dt>Requested move-in</dt><dd>1 Nov</dd></div>
           </dl>
           <div class="decision-actions">
-            <button class="btn btn-ghost" type="button">Message</button>
-            <button class="btn btn-primary" type="button">Accept tenant</button>
+            <button class="btn btn-secondary" type="button" data-review-profile>View application</button>
+            <a class="btn btn-primary" href="onboarding.html">Set up my listing</a>
           </div>
           <small>Prototype example — no tenant is accepted automatically.</small>
         </div>
@@ -218,7 +242,7 @@
         <div class="section-heading narrow">
           <span class="eyebrow">Trust is designed into the journey</span>
           <h2>Four rules make remote renting work.</h2>
-          <p>The landing page does not hide the platform model. It explains what landlords need to know before they spend time creating a listing.</p>
+          <p>Clear communication, accurate photos and secure booking help everyone feel ready for the next step.</p>
         </div>
         <div class="rule-strip">
           <div><strong>01</strong><span>Keep communication and booking on-platform</span></div>
@@ -242,7 +266,7 @@
           </details>
           <details>
             <summary>Do I lose control over tenant selection?</summary>
-            <p>No. The proposed journey helps collect and structure information, but the landlord keeps the final acceptance decision.</p>
+            <p>No. Applications and documents are kept together, and you keep the final decision about who to rent to.</p>
           </details>
           <details>
             <summary>Do I need to arrange physical viewings?</summary>
@@ -269,23 +293,70 @@
         </div>
       </div>
     </section>
+
+    </div>
+    <div data-audience="tenant">
+      <section class="landing-section" id="tenant-benefits">
+        <div class="landing-container">
+          <div class="section-heading"><span class="eyebrow">Make yourself at home</span><h2>A little less searching.<br>A lot more living.</h2><p>From your first shortlist to your first day in a new city, take the next step with a clear picture of your home.</p></div>
+          <div class="landing-card-grid">
+            <article class="landing-card"><span class="landing-icon" aria-hidden="true">⌂</span><h3>A home that fits your plans</h3><p>Explore rooms, studios and apartments for a semester, a new job or a longer stay.</p></article>
+            <article class="landing-card"><span class="landing-icon" aria-hidden="true">↗</span><h3>Get the full picture</h3><p>Compare photos, rental costs and the details that matter before you make your choice.</p></article>
+            <article class="landing-card"><span class="landing-icon" aria-hidden="true">☏</span><h3>Meet your landlord online</h3><p>Ask questions and talk through your plans without travelling for a viewing.</p></article>
+            <article class="landing-card"><span class="landing-icon" aria-hidden="true">✓</span><h3>Feel ready to move</h3><p>Use the online booking flow and find support for your next step.</p></article>
+          </div>
+        </div>
+      </section>
+      <section class="landing-section soft-section" id="tenant-journey">
+        <div class="landing-container">
+          <div class="section-heading narrow"><span class="eyebrow">Your next chapter, in four steps</span><h2>From a new city<br>to your new front door.</h2><p>Start with a shortlist. Take it one step at a time.</p></div>
+          <div class="journey-steps">
+            <article class="journey-step"><span class="step-number">01</span><h3>Find your favourite</h3><p>Choose a city, explore homes and save the places that feel right.</p></article>
+            <article class="journey-step"><span class="step-number">02</span><h3>Start a conversation</h3><p>Tell the landlord about yourself and ask anything you need to know.</p></article>
+            <article class="journey-step"><span class="step-number">03</span><h3>Review and book</h3><p>Check the full costs and booking terms before confirming your stay.</p></article>
+            <article class="journey-step"><span class="step-number">04</span><h3>Settle into your city</h3><p>Arrange the handover with your landlord and make the space your own.</p></article>
+          </div>
+          <div class="center-cta"><a class="btn btn-primary btn-large" href="#tenant-homes">Find my next home</a></div>
+        </div>
+      </section>
+      <section class="landing-section" id="tenant-homes">
+        <div class="landing-container">
+          <div class="section-heading"><span class="eyebrow">Room for your next adventure</span><h2>Where will you feel at home?</h2><p>Try a search with these illustrative homes. For live availability, continue to HousingAnywhere.</p></div>
+          <form class="home-search" id="homeSearch">
+            <label for="searchCity">City<select id="searchCity"><option value="all">All cities</option><option>Amsterdam</option><option>Rotterdam</option><option>Utrecht</option></select></label>
+            <label for="searchBudget">Monthly budget<select id="searchBudget"><option value="all">Any budget</option><option value="1000">Up to €1,000</option><option value="1500">Up to €1,500</option><option value="2000">Up to €2,000</option></select></label>
+            <button class="btn btn-primary" type="submit">Search homes</button>
+          </form>
+          <div class="homes-result-bar"><p class="homes-result-count" id="homesResultCount" role="status">3 example homes</p><button class="saved-filter" id="savedFilter" type="button" aria-pressed="false">Saved homes (0)</button></div>
+          <div class="homes-grid" id="homesGrid">
+            <article class="home-card" data-home="amsterdam" data-city="Amsterdam" data-rent="1450"><div class="home-card-image"><img src="assets/bedroom-example.jpg" alt="Sunlit double bedroom in the Amsterdam example apartment" loading="lazy"><button class="save-home" type="button" data-save-home="amsterdam" aria-label="Save Amsterdam example home" aria-pressed="false">♡</button><span class="home-example-pill">Example</span></div><div class="home-card-copy"><span class="dashboard-kicker">Amsterdam · Apartment</span><h3>Light-filled city apartment</h3><p>1 bedroom · Furnished · 65 m²</p><div class="home-card-bottom"><strong>€1,450<small>/month</small></strong><button type="button" class="home-details-link" data-view-home="amsterdam">View home ↗</button></div></div></article>
+            <article class="home-card" data-home="rotterdam" data-city="Rotterdam" data-rent="850"><div class="home-card-image"><img src="assets/living-room-example.jpg" alt="Comfortable shared living room in the Rotterdam example home" loading="lazy"><button class="save-home" type="button" data-save-home="rotterdam" aria-label="Save Rotterdam example home" aria-pressed="false">♡</button><span class="home-example-pill">Example</span></div><div class="home-card-copy"><span class="dashboard-kicker">Rotterdam · Private room</span><h3>Your space, a shared home</h3><p>Private room · Shared living area</p><div class="home-card-bottom"><strong>€850<small>/month</small></strong><button type="button" class="home-details-link" data-view-home="rotterdam">View home ↗</button></div></div></article>
+            <article class="home-card" data-home="utrecht" data-city="Utrecht" data-rent="1100"><div class="home-card-image"><img src="assets/kitchen-v3.jpg" alt="Modern white kitchen with breakfast bar in the Utrecht example studio" loading="lazy"><button class="save-home" type="button" data-save-home="utrecht" aria-label="Save Utrecht example home" aria-pressed="false">♡</button><span class="home-example-pill">Example</span></div><div class="home-card-copy"><span class="dashboard-kicker">Utrecht · Studio</span><h3>A fresh start in Utrecht</h3><p>Studio · Own kitchen · Furnished</p><div class="home-card-bottom"><strong>€1,100<small>/month</small></strong><button type="button" class="home-details-link" data-view-home="utrecht">View home ↗</button></div></div></article>
+          </div>
+          <div class="homes-empty" id="homesEmpty" hidden><h3>A little more room in your search?</h3><p>No example homes match these filters. Try another city or budget.</p><button class="btn btn-secondary" type="button" id="resetSearch">Reset search</button></div>
+          <p class="sample-note">Sample homes and prices are illustrative, not live listings or offers.</p>
+        </div>
+      </section>
+      <section class="landing-section pricing-section" id="tenant-costs"><div class="landing-container pricing-grid"><div class="pricing-copy"><span class="eyebrow">See the whole picture</span><h2>Know your costs.<br>Plan your move.</h2><p>Review the monthly rent, included utilities, deposits and any booking fees before you commit to a home.</p></div><div class="calculator-card listing-ready-card"><span class="listing-ready-icon" aria-hidden="true">✓</span><h3>Before you book, check</h3><ul><li>What is included in your monthly rent</li><li>Your move-in date and length of stay</li><li>The total payment and cancellation terms</li></ul><a class="btn btn-primary" href="https://housinganywhere.com/pricing/tenants" target="_blank" rel="noopener noreferrer">View tenant pricing ↗</a></div></div></section>
+      <section class="landing-section faq-section" id="tenant-faq"><div class="landing-container faq-grid"><div><span class="eyebrow">A little clarity goes a long way</span><h2>Your move.<br>Your questions.</h2></div><div class="faq-list"><details open><summary>Can I explore homes in this prototype?</summary><p>Yes. Filter the example homes by city and budget, save your favourites, and preview their details. To check availability or book, follow the link to HousingAnywhere.</p></details><details><summary>Can I contact the landlord before booking?</summary><p>On HousingAnywhere, you can message the landlord to ask about the home and share your plans before making a booking.</p></details><details><summary>Can I book from another country?</summary><p>The platform is designed for online renting. Photos, descriptions and conversations with the landlord help you choose remotely.</p></details><details><summary>Where can I get help with a real booking?</summary><p>Visit the <a href="https://answers.housinganywhere.com/en/" target="_blank" rel="noopener noreferrer">HousingAnywhere Help Centre</a> for support with an account, a booking or your move.</p></details></div></div></section>
+      <section class="final-cta-section"><div class="landing-container final-cta-card"><div><span class="eyebrow">Your next chapter is waiting</span><h2>New city. New keys.<br>Make it yours.</h2><p>Start with a home that suits your plans.</p></div><div class="final-cta-actions"><a class="btn btn-primary btn-large" href="#tenant-homes">Explore homes</a><button class="text-button" type="button" data-select-audience="landlord" data-scroll-top>Have a property to rent out? →</button></div></div></section>
+    </div>
   </main>
 
-  <footer class="landing-footer">
+  <footer class="landing-footer" id="site-footer">
     <div class="landing-container footer-grid">
-      <div class="brand footer-brand">
-        <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 44 40">
-            <path d="M4 30.5c4.8-11.8 10.8-17.7 18-17.7s13.2 5.9 18 17.7" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/>
-            <path d="M10 30.5h24" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/>
-          </svg>
-        </span>
-        <span class="brand-name">HousingAnywhere</span>
-      </div>
-      <span>Educational concept · VU Amsterdam · not an official HousingAnywhere page</span>
+      <div class="footer-intro"><a class="brand footer-brand" href="index.html" aria-label="HousingAnywhere concept home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 44 40"><path d="M4 30.5c4.8-11.8 10.8-17.7 18-17.7s13.2 5.9 18 17.7M10 30.5h24" fill="none" stroke="currentColor" stroke-width="6.2" stroke-linecap="round"/></svg></span><span class="brand-name">Housing<br>Anywhere</span></a><div class="footer-language"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c-6 6-6 12 0 18 6-6 6-12 0-18Z"/></svg><span>English</span></div><div class="footer-app"><h3>Get the app</h3><p>Keep your next move close. Explore homes and stay in touch wherever you are.</p><div class="app-store-links"><a href="https://apps.apple.com/us/app/housinganywhere/id6738123016" target="_blank" rel="noopener noreferrer" aria-label="Get HousingAnywhere on the App Store"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.4 12.5c0-2 1.6-3 1.7-3.1-.9-1.3-2.4-1.5-3-1.5-1.3-.1-2.6.8-3.2.8-.7 0-1.8-.8-2.9-.8C7.8 7.9 6 9.6 6 12.7c0 1.8.7 3.7 1.6 5 .8 1.2 1.7 2.5 2.9 2.4 1.2 0 1.6-.8 3.1-.8 1.4 0 1.8.8 3.1.8 1.2 0 2-1.1 2.8-2.3.9-1.3 1.2-2.6 1.2-2.7-.1 0-3.3-1.1-3.3-2.6ZM15.1 6.4c.7-.8 1.1-1.9 1-3-.9.1-2 .6-2.7 1.4-.6.7-1.2 1.8-1 2.8 1 .1 2-.5 2.7-1.2Z"/></svg><span>App Store</span></a><a href="https://play.google.com/store/apps/details?id=com.housinganywhere.app" target="_blank" rel="noopener noreferrer" aria-label="Get HousingAnywhere on Google Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#3ddc84" d="M4 2v20l11-10Z"/><path fill="#ffce00" d="m15 12 4-3 3 3-3 3Z"/><path fill="#4285f4" d="m4 2 15 7-4 3Z"/><path fill="#ef4444" d="m4 22 15-7-4-3Z"/></svg><span>Google Play</span></a></div></div></div>
+      <nav class="footer-column" aria-label="About HousingAnywhere"><h3>HousingAnywhere</h3><ul><li><a href="https://housinganywhere.com/about" target="_blank" rel="noopener noreferrer">About</a></li><li><a href="https://housinganywhere.com/careers" target="_blank" rel="noopener noreferrer">Careers</a></li><li><a href="https://housinganywhere.com/press-releases" target="_blank" rel="noopener noreferrer">Press</a></li><li><a href="https://info.housinganywhere.com/partners" target="_blank" rel="noopener noreferrer">Partners</a></li><li><a href="https://housinganywhere.com/terms" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li><li><a href="https://housinganywhere.com/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy policy</a></li><li><a href="https://housinganywhere.com/cookie-policy" target="_blank" rel="noopener noreferrer">Cookie policy</a></li><li><a href="https://housinganywhere.com/sitemap" target="_blank" rel="noopener noreferrer">Sitemap</a></li></ul></nav>
+      <div class="footer-column"><nav aria-label="Tenant resources"><h3>Tenants</h3><ul><li><a href="https://housinganywhere.com/renting" target="_blank" rel="noopener noreferrer">How it works</a></li><li><a href="https://housinganywhere.com/pricing/tenants" target="_blank" rel="noopener noreferrer">Pricing</a></li><li><a href="https://housinganywhere.com/online-rent-payment" target="_blank" rel="noopener noreferrer">Pay rent online</a></li><li><a href="https://housinganywhere.com/blog/tenants" target="_blank" rel="noopener noreferrer">Blog for tenants</a></li></ul></nav><nav class="footer-support" aria-label="Support"><h3>Support</h3><ul><li><a href="https://answers.housinganywhere.com/en/" target="_blank" rel="noopener noreferrer">Help</a></li><li><a href="https://housinganywhere.com/contact" target="_blank" rel="noopener noreferrer">Contact us</a></li></ul></nav></div>
+      <nav class="footer-column" aria-label="Landlord resources"><h3>Landlords</h3><ul><li><button class="footer-link" type="button" data-select-audience="landlord" data-scroll-top>Become a landlord</button></li><li><a href="https://housinganywhere.com/renting-out" target="_blank" rel="noopener noreferrer">How it works</a></li><li><a href="https://housinganywhere.com/pricing/landlords" target="_blank" rel="noopener noreferrer">Pricing</a></li><li><a href="https://housinganywhere.com/rent-guarantee-for-landlords" target="_blank" rel="noopener noreferrer">HousingAnywhere Rent Guarantee</a></li><li><a href="https://housinganywhere.com/online-rent-collection" target="_blank" rel="noopener noreferrer">Collect rent online</a></li><li><a href="https://housinganywhere.com/help-center" target="_blank" rel="noopener noreferrer">How-to guides</a></li><li><a href="https://housinganywhere.com/blog/landlords/United-Kingdom" target="_blank" rel="noopener noreferrer">Success stories</a></li><li><a href="https://housinganywhere.com/blog/landlords/United-Kingdom" target="_blank" rel="noopener noreferrer">Blog for landlords</a></li><li><a href="https://housinganywhere.com/integrations" target="_blank" rel="noopener noreferrer">Integrations</a></li><li><a href="https://housinganywhere.com/legal" target="_blank" rel="noopener noreferrer">Sample rental contracts</a></li></ul></nav>
+      <nav class="footer-socials" aria-label="Social media"><a href="https://www.facebook.com/HousingAnywherecom" target="_blank" rel="noopener noreferrer" aria-label="HousingAnywhere on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M14.5 6H13a3 3 0 0 0-3 3v12m-3-9h8"/></svg></a><a href="https://twitter.com/HousingAnywhere" target="_blank" rel="noopener noreferrer" aria-label="HousingAnywhere on X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h4l12 18h-4L4 3Zm16 0L4 21"/></svg></a><a href="https://linkedin.com/company/housinganywhere" target="_blank" rel="noopener noreferrer" aria-label="HousingAnywhere on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 10v7m4 0v-7m0 3c0-4 6-4 6 0v4"/><circle cx="7" cy="7" r=".5"/></svg></a><a href="https://www.youtube.com/user/HousingAnywhere" target="_blank" rel="noopener noreferrer" aria-label="HousingAnywhere on YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="m10 9 5 3-5 3Z"/></svg></a><a href="https://www.instagram.com/housinganywhere" target="_blank" rel="noopener noreferrer" aria-label="HousingAnywhere on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5"/></svg></a></nav>
     </div>
+    <div class="landing-container footer-bottom"><span>Educational concept · VU Amsterdam · not an official HousingAnywhere page</span><span>Prototype v3.0</span></div>
   </footer>
+  <dialog class="site-dialog" id="accountDialog" aria-labelledby="accountTitle"><button class="dialog-close" type="button" data-close-dialog aria-label="Close My Account">×</button><span class="eyebrow">My Account</span><h2 id="accountTitle">Your next chapter,<br>all in one place.</h2><p id="accountGreeting">Pick up your search or continue your listing.</p><div class="account-options"><button type="button" class="account-option" id="accountHomes"><span aria-hidden="true">⌂</span><div><strong>My home search</strong><small id="savedHomesSummary">Explore homes and save your favourites</small></div><span aria-hidden="true">→</span></button><a class="account-option" href="onboarding.html"><span aria-hidden="true">↗</span><div><strong id="listingAccountLabel">Create my listing</strong><small id="listingAccountSummary">Start your guided property journey</small></div><span aria-hidden="true">→</span></a></div><a class="btn btn-primary account-login" href="https://housinganywhere.com/oauth/signin?target=tenant" target="_blank" rel="noopener noreferrer">Log in on HousingAnywhere ↗</a><p class="dialog-note">Listing progress and favourite example homes are saved on this device. Live accounts and bookings are on HousingAnywhere.</p></dialog>
+  <dialog class="site-dialog home-dialog" id="homeDialog" aria-labelledby="homeDialogTitle"><button class="dialog-close" type="button" data-close-dialog aria-label="Close home preview">×</button><span class="eyebrow">Example home</span><h2 id="homeDialogTitle"></h2><p id="homeDialogSummary"></p><div class="home-dialog-images" id="homeDialogImages"></div><p id="homeDialogFeatures"></p><a class="btn btn-primary" id="realHomesLink" target="_blank" rel="noopener noreferrer">Search live homes ↗</a><p class="dialog-note">Photos, details and prices illustrate the experience. This example cannot be booked.</p></dialog>
+  <dialog class="site-dialog" id="profileDialog" aria-labelledby="profileTitle"><button class="dialog-close" type="button" data-close-dialog aria-label="Close sample application">×</button><span class="eyebrow">Example application</span><div class="sample-profile-heading"><img src="assets/renter-sofia.jpg" alt="Illustrative portrait for sample renter Sofia"><div><h2 id="profileTitle">Meet Sofia.</h2><p>Master's student · 7-month stay</p></div></div><dl class="decision-list"><div><dt>Looking for</dt><dd>Apartment in Amsterdam</dd></div><div><dt>Requested move-in</dt><dd>1 November</dd></div><div><dt>Identity &amp; enrolment</dt><dd>Example documents ready</dd></div></dl><p>A clear profile and supporting documents help you get to know an applicant before deciding.</p><a class="btn btn-primary" href="onboarding.html">Create my listing</a><p class="dialog-note">Sofia is a fictional profile. No application is submitted or accepted in this preview.</p></dialog>
 
-  <script src="landing.js?v=2"></script>
+  <script src="landing.js?v=3.0"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-# HousingAnywhere — Private Investor Onboarding Prototype
+# HousingAnywhere — Rental Platform Prototype v3.0
 
 Educational prototype for the VU Amsterdam course **Introduction to E-Business & Online Commerce**.
 
@@ -9,6 +9,22 @@ The prototype redesigns HousingAnywhere's private-landlord onboarding from a hig
 The core design principle is:
 
 > Reduce unnecessary time and effort without removing the landlord's control over a valuable asset.
+
+## v3.0 — tenants and landlords
+
+- A landing-page switch provides full tenant and landlord views.
+- Tenant view includes illustrative homes, city/budget filters, favourites saved on this device, and home previews linking to live HousingAnywhere searches.
+- Navigation is now Benefits, Your journey, Costs & booking, and Help & answers.
+- My Account opens a panel for saved homes, continuing the listing journey, and accessing the real platform account.
+- A light blue-grey footer includes company, tenant, landlord, support, app store and social links.
+- The step 5 kitchen photo is replaced with an actual kitchen.
+- The existing nine-step landlord flow remains available. Commission is still shown at the final review, not step 6.
+
+### Backups
+
+The complete v2.0 site is preserved on [`backup/v2.0`](https://github.com/Ouahie/housinganywhere-onboarding-prototype/tree/backup/v2.0), at commit `52b32a8efc2e1e3c6cee6e9bb8415fb504275a18`, before any v3.0 changes.
+
+The original pre-update build is preserved on `backup/pre-onboarding-updates-2026-10-03`.
 
 ## What changed in v2
 
@@ -80,3 +96,9 @@ The prototype is grounded in:
 ## Important
 
 This is an educational concept prototype and is not a live HousingAnywhere service. Verification, automated compliance checks, media coaching and other interactions are simulated to demonstrate the proposed future-state journey.
+
+## Image credits
+
+The new kitchen photograph is hosted locally as `assets/kitchen-v3.jpg` from [Unsplash](https://images.unsplash.com/photo-1556912172-45b7abe8b7e1) (image source: `photo-1556912172-45b7abe8b7e1`). The previous incorrectly labelled kitchen image is now named `assets/living-room-example.jpg` and used only as a living-room example. Room images, home prices and renter profiles are illustrative; they do not represent live listings or verified tenants.
+
+Footer destinations follow the [official HousingAnywhere website](https://housinganywhere.com/). App download links point to its publisher listings on the App Store and Google Play.

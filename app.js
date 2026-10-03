@@ -65,7 +65,7 @@ function welcome(){
   app.innerHTML=`<section class="screen hero-screen">
     <div class="hero-layout">
       <div>
-        <div class="eyebrow">For landlords</div>
+        <div class="eyebrow">Your next booking starts here</div>
         <h2>Find the right tenant. Keep control. Skip the endless viewings.</h2>
         <p class="hero-copy">Create a clear listing, reach international students and working professionals, and review applicants online while keeping the final decision in your hands.</p>
         <div class="hero-cta-row">
@@ -183,7 +183,7 @@ function media(){
     </div>
     <div id="mediaPreview" class="media-preview">
       <figure class="room-card"><div class="media-tile"><img src="assets/bedroom-example.jpg" alt="Bright, elegantly furnished bedroom example" loading="lazy"><span class="media-label">Bedroom example</span></div><figcaption>Bedroom · show the full sleeping area and storage</figcaption></figure>
-      <figure class="room-card"><div class="media-tile"><img src="assets/kitchen-example.jpg" alt="Spacious modern kitchen and dining area example" loading="lazy"><span class="media-label">Kitchen example</span></div><figcaption>Kitchen · include appliances and dining space</figcaption></figure>
+      <figure class="room-card"><div class="media-tile"><img src="assets/kitchen-v3.jpg" alt="Modern white kitchen with a hob, extractor hood and breakfast bar" loading="lazy"><span class="media-label">Kitchen example</span></div><figcaption>Kitchen · include appliances and dining space</figcaption></figure>
       <figure class="room-card"><div class="media-tile"><img src="assets/bathroom-example.jpg" alt="Clean contemporary bathroom example" loading="lazy"><span class="media-label">Bathroom example</span></div><figcaption>Bathroom · use good light and a clear angle</figcaption></figure>
     </div>
     <div class="media-coach"><div><strong>Transparency coach</strong><div class="inline-note" id="mediaCoachText">Add clear photos of each major room. The prototype can flag gaps before publication.</div></div><div class="media-score" id="mediaScore">Guidance ready</div></div>
