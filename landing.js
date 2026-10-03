@@ -8,6 +8,7 @@ function euros(value){
   return new Intl.NumberFormat("en-GB",{style:"currency",currency:"EUR",maximumFractionDigits:0}).format(value||0);
 }
 function updateCalculator(){
+  if(!contract||!fee)return;
   const monthly=Math.max(0,Number(rent?.value||0));
   const period=Math.max(1,Number(months?.value||1));
   const rate=Number(market?.value||0.08);

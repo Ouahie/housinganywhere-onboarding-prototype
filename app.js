@@ -6,6 +6,7 @@ const defaults={
   account:{firstName:"",lastName:"",email:"",phone:"",units:"2",role:"side-investor"},
   verified:{email:false,phone:false,identity:false,payout:false},
   rules:{platform:false,viewings:false,transparency:false,payout:false},
+  ruleAcknowledged:false,
   ruleQuiz:null,
   property:{country:"Netherlands",city:"Amsterdam",address:"",type:"Apartment",size:"",bedrooms:"1",registration:"Yes",rules:""},
   pricing:{rent:"",utilities:"",deposit:"",extra:"",availableFrom:"",availableTo:"",minimumStay:"3",maximumStay:"12"},
@@ -51,7 +52,7 @@ function renderProgress(){
 }
 
 function header(step,title,copy){
-  return `<div class="screen-header"><div class="kicker"><span class="step-pill">${step}</span> Private investor onboarding</div><h2>${title}</h2><p>${copy}</p></div>`;
+  return `<div class="screen-header"><div class="kicker"><span class="step-pill">${step}</span> Your HousingAnywhere journey</div><h2>${title}</h2><p>${copy}</p></div>`;
 }
 function solutionNote(title,copy){
   return `<div class="solution-note"><strong>${title}</strong><span>${copy}</span></div>`;
@@ -64,16 +65,16 @@ function welcome(){
   app.innerHTML=`<section class="screen hero-screen">
     <div class="hero-layout">
       <div>
-        <div class="eyebrow">For private investors</div>
+        <div class="eyebrow">For landlords</div>
         <h2>Find the right tenant. Keep control. Skip the endless viewings.</h2>
-        <p class="hero-copy">List for free, reach international students and working professionals, screen digitally and only pay commission when you secure a booking.</p>
+        <p class="hero-copy">Create a clear listing, reach international students and working professionals, and review applicants online while keeping the final decision in your hands.</p>
         <div class="hero-cta-row">
           <button class="btn btn-primary" type="button" onclick="start()">List your property</button>
           <button class="btn btn-ghost" type="button" onclick="demo()">Try demo profile</button>
         </div>
         <div class="stat-strip">
-          <span class="stat-chip">✓ 175+ cities</span>
-          <span class="stat-chip">✓ 400+ university partners</span>
+          <span class="stat-chip">✓ Reach tenants internationally</span>
+          <span class="stat-chip">✓ Review verified profiles</span>
           <span class="stat-chip">✓ Secure online booking</span>
         </div>
         <p class="microcopy">Educational prototype. Progress is saved on this device.</p>
@@ -92,17 +93,17 @@ function welcome(){
 function account(){
   const a=state.account;
   app.innerHTML=`<section class="screen">
-    ${header("1 of 9","First, tell us how you rent.","We use a few details to keep the flow relevant for a small private portfolio — not a professional property company.")}
+    ${header("1 of 9","Your journey to HousingAnywhere","Create your account and tell us a little about the property you want to list.")}
     <div class="form-grid">
       <div class="field"><label for="firstName">First name</label><input id="firstName" autocomplete="given-name" value="${esc(a.firstName)}"></div>
       <div class="field"><label for="lastName">Last name</label><input id="lastName" autocomplete="family-name" value="${esc(a.lastName)}"></div>
       <div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="email" value="${esc(a.email)}"></div>
       <div class="field"><label for="phone">Phone number</label><input id="phone" autocomplete="tel" value="${esc(a.phone)}"></div>
       <div class="field"><label for="units">How many rentable units do you manage?</label><select id="units"><option>1</option><option>2</option><option>3</option><option>4–6</option><option>7–12</option></select></div>
-      <div class="field"><label for="role">Which description fits best?</label><select id="role"><option value="side-investor">I own rental property alongside another career</option><option value="full-time">Property rental is my main occupation</option><option value="other">Other</option></select></div>
+      <div class="field"><label for="role">Which description fits best?</label><select id="role"><option value="side-investor">I own a rental property alongside my career.</option><option value="full-time">Property rental is my main profession.</option><option value="other">Other</option></select></div>
     </div>
-    <div class="segment-card"><div class="mini-icon">i</div><div><strong>Why we ask</strong><p>Small portfolios should not be forced through the same high-touch process designed for professional property managers.</p></div></div>
-    ${solutionNote("Our solution: segment early","HousingAnywhere identifies the private-investor profile immediately, so the journey can emphasise time-saving, trust and control.")}
+    <div class="segment-card"><div class="mini-icon">i</div><div><strong>Why we ask</strong><p>Your details help us set up your account and keep listing and booking updates in one place.</p></div></div>
+    ${solutionNote("Our solution: a clear start","A short account setup gives landlords a clear path into the listing journey.")}
     ${nav("Continue",false,"saveAccount()",false)}
   </section>`;
   document.getElementById("units").value=a.units;
@@ -116,56 +117,45 @@ function verifyRow(key,title,copy,tag){
 function verification(){
   const v=state.verified,all=v.email&&v.phone&&v.identity&&v.payout;
   app.innerHTML=`<section class="screen">
-    ${header("2 of 9","Verify once. Publish without waiting for a call.","Routine checks happen digitally. Human support is reserved for exceptions, not every landlord.")}
+    ${header("2 of 9","Set up your account for a successful booking.","Here are a few important legal and account checks. Complete them now to get your listing ready for its first booking.")}
     ${verifyRow("email","Email address","Confirm account and booking updates.","Verify")}
     ${verifyRow("phone","Mobile number","Confirm a reachable contact number.","Send code")}
-    ${verifyRow("identity","Identity check","Prototype of the landlord identity-verification step.","Start check")}
+    ${verifyRow("identity","Identity check","Confirm your identity so tenants know who they are booking with.","Start check")}
     ${verifyRow("payout","Payout details","Confirm where successful booking payouts should be sent.","Set up")}
-    <div class="info-box"><strong>What changes from today?</strong> The current mandatory phone onboarding is replaced by digital verification and guided education.</div>
+    <div class="info-box"><strong>Your details stay protected.</strong> Complete each check once so your account is ready when a tenant books.</div>
     ${solutionNote("Our solution: low-touch verification","The scalable default is self-service. A Business Development Representative only steps in when verification fails, information conflicts or the landlord asks for help.")}
     ${nav("Continue",!all)}
   </section>`;
 }
 
-function ruleCard(key,n,title,copy,why){
+function ruleCard(n,title,copy){
   return `<article class="rule-card">
-    <div class="rule-top"><span class="rule-number">RULE ${n}</span><span class="why-tag">${why}</span></div>
+    <div class="rule-top"><span class="rule-number">RULE ${n}</span></div>
     <h3>${title}</h3><p>${copy}</p>
-    <label class="check-row"><input type="checkbox" ${state.rules[key]?"checked":""} onchange="setRule('${key}',this.checked)"><span>I understand this rule</span></label>
   </article>`;
 }
 function rules(){
-  const allRules=Object.values(state.rules).every(Boolean);
-  const quizCorrect=state.ruleQuiz==="platform";
+  const acknowledged=!!state.ruleAcknowledged;
   app.innerHTML=`<section class="screen">
-    ${header("3 of 9","Understand the rules — and why they protect the booking.","Instead of a long verbal explanation, the essential policies are taught in short, interactive pieces.")}
+    ${header("3 of 9","A few important guidelines for your listing.","These guidelines help keep communication clear and create a smooth booking experience for you and your tenants.")}
     <div class="rules-grid">
-      ${ruleCard("platform","01","Keep communication and booking on-platform","Keep rental conversations and the booking inside HousingAnywhere so the interaction remains traceable and protected.","Fraud prevention")}
-      ${ruleCard("viewings","02","No physical viewings","International tenants often book before arrival. Detailed photos, video and property information replace the viewing.","Remote renting")}
-      ${ruleCard("transparency","03","Your listing must match reality","Photos, descriptions, costs and property details must accurately represent what the tenant will receive.","Tenant trust")}
-      ${ruleCard("payout","04","Payout follows the move-in protection window","The first month's rent is held securely and released after the tenant has had the protected move-in period.","Secure payment")}
+      ${ruleCard("01","Keep communication and booking on HousingAnywhere","Keep conversations and the booking on the platform so the details stay together and the booking remains protected.")}
+      ${ruleCard("02","Help tenants understand the property remotely","Clear photos, video and property information help tenants make an informed decision before they arrive.")}
+      ${ruleCard("03","Make sure your listing reflects the property","Photos, descriptions, costs and property details should accurately represent what the tenant will receive.")}
+      ${ruleCard("04","Payout follows the move-in protection period","The first month's rent is released after the tenant has had the move-in protection period.")}
     </div>
 
-    <div class="quiz-card">
-      <h3>Quick check</h3>
-      <p>A tenant asks to pay the first month's rent directly to your bank account to “save time”. What should you do?</p>
-      <div class="quiz-options">
-        <label class="quiz-option ${state.ruleQuiz==="platform"?"correct":""}"><input type="radio" name="ruleQuiz" ${state.ruleQuiz==="platform"?"checked":""} onchange="answerQuiz('platform')"><span><strong>Keep the booking and first payment on HousingAnywhere.</strong><br><span class="inline-note">This keeps the platform protections in place.</span></span></label>
-        <label class="quiz-option ${state.ruleQuiz==="bank"?"incorrect":""}"><input type="radio" name="ruleQuiz" ${state.ruleQuiz==="bank"?"checked":""} onchange="answerQuiz('bank')"><span><strong>Accept the bank transfer.</strong><br><span class="inline-note">This moves the transaction outside the protected flow.</span></span></label>
-      </div>
-      ${state.ruleQuiz==="bank"?'<div class="warning-box"><strong>Not quite.</strong> Keep the booking and first payment on-platform so the secure booking process remains intact.</div>':""}
-    </div>
-    <div class="warning-box"><strong>Publishing requirement:</strong> acknowledge all four rules and complete the quick check.</div>
+    <label class="acknowledgement-card"><input type="checkbox" ${acknowledged?"checked":""} onchange="acknowledgeRules(this.checked)"><span><strong>Acknowledgement</strong><span>I acknowledge the rules listed above and understand what they mean.</span></span></label>
     ${solutionNote("Our solution: teach, do not just disclose","The landlord learns the platform rules inside the task, with a short scenario to check understanding. This replaces repetitive verbal onboarding while keeping compliance visible.")}
-    ${nav("Continue",!(allRules&&quizCorrect))}
+    ${nav("Continue",!acknowledged)}
   </section>`;
 }
 
 function property(){
   const p=state.property;
   app.innerHTML=`<section class="screen">
-    ${header("4 of 9","Build the property profile.","Give tenants the information they need to decide remotely — in small, manageable sections.")}
-    <div class="segment-card"><div class="mini-icon">✓</div><div><strong>Tailored to your profile</strong><p>Private investor · ${esc(state.account.units)} rentable unit(s) · first property listing.</p></div></div>
+    ${header("4 of 9","Build your property profile.","Give tenants the details they need to understand your home and decide remotely.")}
+    <div class="segment-card"><div class="mini-icon">✓</div><div><strong>Your listing</strong><p>${esc(state.account.units)} rentable unit(s) in your account.</p></div></div>
     <div class="form-grid">
       <div class="field"><label for="country">Country</label><select id="country"><option>Netherlands</option><option>Germany</option><option>France</option><option>Spain</option><option>Italy</option></select></div>
       <div class="field"><label for="city">City</label><input id="city" value="${esc(p.city)}"></div>
@@ -176,8 +166,8 @@ function property(){
       <div class="field"><label for="registration">Registration possible?</label><select id="registration"><option>Yes</option><option>No</option><option>Unsure</option></select></div>
       <div class="field full"><label for="houseRules">House rules</label><textarea id="houseRules" placeholder="e.g. no smoking, quiet hours, pets...">${esc(p.rules)}</textarea></div>
     </div>
-    <div class="info-box"><strong>Autosaved:</strong> the investor can leave and continue later instead of finishing a long listing in one sitting.</div>
-    ${solutionNote("Our solution: progressive disclosure","The listing is broken into focused stages rather than one large form. This reduces perceived onboarding effort for investors managing property alongside another career.")}
+    <div class="info-box"><strong>Autosaved:</strong> you can leave and continue later instead of finishing the listing in one sitting.</div>
+    ${solutionNote("Our solution: progressive disclosure","The listing is broken into focused stages rather than one large form, making it easier to complete at your own pace.")}
     ${nav("Continue",false,"saveProperty()")}
   </section>`;
   ["country","type","bedrooms","registration"].forEach(id=>document.getElementById(id).value=p[id]);
@@ -185,16 +175,16 @@ function property(){
 
 function media(){
   app.innerHTML=`<section class="screen">
-    ${header("5 of 9","Make the listing the viewing.","Because tenants book remotely, strong media is not decoration — it is part of the trust mechanism.")}
+    ${header("5 of 9","Show every room at its best.","Bright, accurate photos help tenants picture themselves in your home and make an informed decision remotely.")}
     <div class="upload-box">
-      <strong>Add property photos</strong>
-      <p class="inline-note">Select photos to preview the prototype media coach. Floorplans and a video walkthrough can be added as well.</p>
+      <strong>Add your property photos</strong>
+      <p class="inline-note">Use the room examples below for inspiration, then upload clear photos of your own bedroom, kitchen and bathroom.</p>
       <input id="mediaInput" type="file" accept="image/*" multiple>
     </div>
     <div id="mediaPreview" class="media-preview">
-      <div class="media-tile">Bedroom<span class="media-label">Recommended</span></div>
-      <div class="media-tile">Kitchen<span class="media-label">Recommended</span></div>
-      <div class="media-tile">Bathroom<span class="media-label">Recommended</span></div>
+      <figure class="room-card"><div class="media-tile"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Bright, elegantly furnished bedroom example" loading="lazy"><span class="media-label">Bedroom example</span></div><figcaption>Bedroom · show the full sleeping area and storage</figcaption></figure>
+      <figure class="room-card"><div class="media-tile"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Spacious modern kitchen and dining area example" loading="lazy"><span class="media-label">Kitchen example</span></div><figcaption>Kitchen · include appliances and dining space</figcaption></figure>
+      <figure class="room-card"><div class="media-tile"><img src="https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Clean contemporary bathroom example" loading="lazy"><span class="media-label">Bathroom example</span></div><figcaption>Bathroom · use good light and a clear angle</figcaption></figure>
     </div>
     <div class="media-coach"><div><strong>Transparency coach</strong><div class="inline-note" id="mediaCoachText">Add clear photos of each major room. The prototype can flag gaps before publication.</div></div><div class="media-score" id="mediaScore">Guidance ready</div></div>
     ${solutionNote("Our solution: media coaching","Instead of simply enforcing transparency at the end, the interface helps the landlord create a listing capable of replacing a physical viewing.")}
@@ -223,7 +213,7 @@ function media(){
 function pricing(){
   const p=state.pricing;
   app.innerHTML=`<section class="screen">
-    ${header("6 of 9","Set transparent pricing and availability.","Show the complete rental picture upfront so tenants can decide without hidden surprises.")}
+    ${header("6 of 9","Set your pricing and availability.","Add the rent, other property costs and available dates so tenants can plan their stay.")}
     <div class="form-grid">
       <div class="field"><label for="rent">Monthly rent (€)</label><input id="rent" type="number" min="1" value="${esc(p.rent)}"></div>
       <div class="field"><label for="utilities">Utilities (€)</label><input id="utilities" type="number" min="0" value="${esc(p.utilities)}"></div>
@@ -234,20 +224,9 @@ function pricing(){
       <div class="field"><label for="minimumStay">Minimum stay (months)</label><input id="minimumStay" type="number" min="1" max="24" value="${esc(p.minimumStay)}"></div>
       <div class="field"><label for="maximumStay">Maximum stay (months)</label><input id="maximumStay" type="number" min="1" max="24" value="${esc(p.maximumStay)}"></div>
     </div>
-    <div class="fee-card"><div><strong>Free to list. Commission applies after a successful booking.</strong><div class="inline-note">The standard commission is up to 8% of total contract value plus VAT where applicable. The exact rate varies by location and is shown before publication.</div></div><div class="fee-value" id="feePreview">—</div></div>
-    ${solutionNote("Our solution: explain the fee before the commitment","Week 2 identified commission uncertainty as a possible barrier. The prototype makes the fee logic visible before publication instead of letting it become a surprise later.")}
+    ${solutionNote("Our solution: clear pricing","This step focuses on the costs and dates tenants need to compare listings. The booking fee is shown with the completed listing at final review.")}
     ${nav("Continue",false,"savePricing()")}
   </section>`;
-  ["rent","minimumStay"].forEach(id=>document.getElementById(id).addEventListener("input",updateFee));
-  updateFee();
-}
-function updateFee(){
-  const rent=Number(document.getElementById("rent")?.value||0);
-  const months=Number(document.getElementById("minimumStay")?.value||0);
-  const preview=document.getElementById("feePreview");
-  if(!preview)return;
-  preview.textContent=rent&&months?`≈ ${money(rent*months*.08)}*`:"—";
-  preview.title="Illustration using the standard 8% rate; exact commission may differ.";
 }
 
 function tenant(){
@@ -260,8 +239,8 @@ function tenant(){
       <div class="field"><label for="preference">Preferred tenant profile</label><select id="preference"><option>No preference</option><option>Student</option><option>Young professional</option><option>Either student or professional</option></select></div>
       <div class="field full"><label for="tenantNotes">Additional screening notes</label><textarea id="tenantNotes" placeholder="e.g. short introduction, planned move-in date...">${esc(t.notes)}</textarea></div>
     </div>
-    <div class="success-box"><strong>Your property, your decision.</strong> HousingAnywhere can reduce repetitive screening work, but the investor still chooses whether to accept a tenant.</div>
-    ${solutionNote("Our solution: automate low-value work, preserve high-value control","This directly addresses the tension found in Week 2: investors want less time spent on admin without surrendering control over a valuable asset.")}
+    <div class="success-box"><strong>Your property, your decision.</strong> HousingAnywhere can reduce repetitive screening work, but you still choose whether to accept a tenant.</div>
+    ${solutionNote("Our solution: automate routine work, preserve your control","The flow reduces time spent on admin while leaving the final tenant decision with the landlord.")}
     ${nav("Continue",false,"saveTenant()")}
   </section>`;
   document.getElementById("preference").value=t.preference;
@@ -272,18 +251,21 @@ function summaryCard(title,rows){
 }
 function review(){
   const a=state.account,p=state.property,pr=state.pricing,t=state.tenant;
+  const feeRate=["netherlands","france"].includes((p.country||"").toLowerCase()) ? 0.05 : 0.08;
+  const feeEstimate=Number(pr.rent||0)*Number(pr.minimumStay||0)*feeRate;
   app.innerHTML=`<section class="screen">
-    ${header("8 of 9","Review once. Publish with confidence.","Automated checks surface gaps before the listing goes live, so human review is only needed for exceptions.")}
+    ${header("8 of 9","Review your listing and booking fee.","Check the details below. You will see the estimated commission here before you choose to publish.")}
     <div class="readiness"><div class="readiness-score">100%</div><div><strong>Ready to publish</strong><div class="inline-note">Required prototype checks are complete. In a production version, image quality, field consistency and policy compliance could be checked automatically here.</div></div></div>
     <div class="summary-grid">
-      ${summaryCard("Landlord",[["Name",(a.firstName+" "+a.lastName).trim()||"—"],["Portfolio",a.units+" unit(s)"],["Profile","Private investor"]])}
+      ${summaryCard("Landlord",[["Name",(a.firstName+" "+a.lastName).trim()||"—"],["Portfolio",a.units+" unit(s)"],["Profile","Landlord"]])}
       ${summaryCard("Property",[["Location",(p.city||"—")+", "+p.country],["Type",p.type],["Size",p.size?p.size+" m²":"—"],["Bedrooms",p.bedrooms]])}
       ${summaryCard("Pricing",[["Monthly rent",money(pr.rent)],["Utilities",money(pr.utilities)],["Deposit",money(pr.deposit)],["Minimum stay",(pr.minimumStay||"—")+" months"]])}
       ${summaryCard("Screening",[["Verified ID",t.id?"Required":"Optional"],["Income",t.income?"Required":"Optional"],["Employment",t.employment?"Required":"Optional"],["Enrolment",t.enrollment?"Required":"Optional"]])}
     </div>
+    <div class="fee-card"><div><strong>Commission after a successful booking</strong><div class="inline-note">Estimated at ${Math.round(feeRate*100)}% of rent for the minimum stay of ${esc(pr.minimumStay||"—")} months${feeRate===.08?", plus VAT where applicable":""}. The exact amount and terms are confirmed before publication.</div></div><div class="fee-value">${feeEstimate?money(feeEstimate):"Add rent to estimate"}</div></div>
     <ul class="checklist">
       <li><span class="checkmark">✓</span>Landlord verification completed</li>
-      <li><span class="checkmark">✓</span>Platform rules understood and quick check passed</li>
+      <li><span class="checkmark">✓</span>Platform rules acknowledged</li>
       <li><span class="checkmark">✓</span>Property information structured for remote booking</li>
       <li><span class="checkmark">✓</span>Pricing and availability transparent</li>
       <li><span class="checkmark">✓</span>Tenant-screening preferences set</li>
@@ -333,6 +315,7 @@ function prev(){state.current=Math.max(0,state.current-1);save();render();scroll
 function verify(key){state.verified[key]=true;save();render();toast("Verified for prototype")}
 function setRule(key,value){state.rules[key]=value;save();render()}
 function answerQuiz(value){state.ruleQuiz=value;save();render()}
+function acknowledgeRules(value){state.ruleAcknowledged=value;save();render()}
 
 function saveAccount(){
   const required=["firstName","lastName","email","phone"];
@@ -382,6 +365,7 @@ function demo(){
   state.account={firstName:"Alex",lastName:"de Vries",email:"alex@example.com",phone:"+31 6 12345678",units:"2",role:"side-investor"};
   state.verified={email:true,phone:true,identity:true,payout:true};
   state.rules={platform:true,viewings:true,transparency:true,payout:true};
+  state.ruleAcknowledged=true;
   state.ruleQuiz="platform";
   state.property={country:"Netherlands",city:"Amsterdam",address:"Wibautstraat 131-D",type:"Apartment",size:"58",bedrooms:"1",registration:"Yes",rules:"No smoking. Respect quiet hours after 22:00."};
   state.pricing={rent:"1450",utilities:"150",deposit:"1450",extra:"0",availableFrom:"2026-11-01",availableTo:"2027-08-31",minimumStay:"3",maximumStay:"10"};
@@ -406,5 +390,5 @@ document.getElementById("closeHelpBtn").addEventListener("click",closeHelp);
 document.getElementById("closeHelpPrimary").addEventListener("click",closeHelp);
 document.getElementById("helpDialog").addEventListener("click",e=>{if(e.target===e.currentTarget)closeHelp()});
 
-Object.assign(window,{start,next,prev,verify,setRule,answerQuiz,saveAccount,saveProperty,savePricing,saveTenant,publish,backToReview,dashboardDemo,restart,demo,toggleNotes,openHelp,closeHelp});
+Object.assign(window,{start,next,prev,verify,setRule,answerQuiz,acknowledgeRules,saveAccount,saveProperty,savePricing,saveTenant,publish,backToReview,dashboardDemo,restart,demo,toggleNotes,openHelp,closeHelp});
 render();

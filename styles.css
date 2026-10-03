@@ -114,6 +114,11 @@ input[type="checkbox"],input[type="radio"]{width:18px;min-height:18px;padding:0;
 .why-tag{font-size:11px;padding:5px 8px;border-radius:999px;background:#FFF4F0;color:var(--muted);font-weight:750}
 .check-row{display:flex;gap:9px;align-items:flex-start;font-size:13px;font-weight:750}
 .quiz-card{border:1px solid #FFD4CA;border-radius:16px;padding:18px;background:linear-gradient(145deg,#FFF7F4,#fff);margin-top:16px}
+.acknowledgement-card{display:flex;align-items:flex-start;gap:12px;margin-top:18px;padding:18px;border:1px solid #FFD4CA;border-radius:15px;background:#FFF8F5;cursor:pointer}
+.acknowledgement-card input{flex:0 0 auto;margin:2px 0 0}
+.acknowledgement-card strong,.acknowledgement-card span span{display:block}
+.acknowledgement-card strong{margin-bottom:5px}
+.acknowledgement-card span span{color:var(--muted);font-size:14px;line-height:1.5}
 .quiz-card h3{margin:0 0 6px}
 .quiz-card p{margin:0 0 14px;color:var(--muted)}
 .quiz-options{display:grid;gap:9px}
@@ -131,6 +136,8 @@ input[type="checkbox"],input[type="radio"]{width:18px;min-height:18px;padding:0;
 .media-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px}
 .media-tile{aspect-ratio:4/3;border:1px solid var(--line);border-radius:12px;background:#FFF3EF;display:grid;place-items:center;overflow:hidden;color:var(--muted);font-size:12px;position:relative}
 .media-tile img{width:100%;height:100%;object-fit:cover}
+.room-card{margin:0;min-width:0}
+.room-card figcaption{padding:9px 2px 0;color:var(--muted);font-size:12px;line-height:1.4}
 .media-label{position:absolute;bottom:8px;left:8px;background:rgba(16,33,63,.78);color:#fff;padding:4px 7px;border-radius:7px;font-size:10px}
 .media-coach{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-top:16px;padding:14px 16px;background:#FFF8F5;border:1px solid #FFD8CF;border-radius:14px}
 .media-score{font-weight:900;color:var(--ha-blue)}
@@ -218,7 +225,7 @@ footer{width:min(1240px,calc(100% - 40px));margin:0 auto 30px;display:flex;justi
 .landing-hero h1{font-size:clamp(48px,6vw,76px);line-height:.96;letter-spacing:-.06em;margin:18px 0 22px;max-width:760px}
 .landing-hero-copy>p{font-size:19px;line-height:1.65;color:var(--muted);max-width:690px;margin:0}
 .landing-proof-row{display:flex;flex-wrap:wrap;gap:15px;margin-top:22px;color:#5C4A44;font-size:13px;font-weight:750}
-.investor-dashboard{background:#fff;border:1px solid #F0DCD4;border-radius:24px;box-shadow:0 28px 70px rgba(109,48,30,.15);padding:22px;transform:rotate(1deg)}
+.landlord-dashboard{background:#fff;border:1px solid #F0DCD4;border-radius:24px;box-shadow:0 28px 70px rgba(109,48,30,.15);padding:22px;transform:rotate(1deg)}
 .dashboard-top{display:flex;justify-content:space-between;gap:14px;align-items:flex-start}
 .dashboard-kicker{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:850;margin-bottom:3px}
 .dashboard-top strong{font-size:17px}
@@ -230,6 +237,7 @@ footer{width:min(1240px,calc(100% - 40px));margin:0 auto 30px;display:flex;justi
 .candidate-card{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;margin-top:10px}
 .candidate-card.featured{border-color:#FFC9BC;background:#FFFBF9}
 .candidate-avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#FFE6DF;color:#8A3823;font-weight:900}
+img.candidate-avatar{object-fit:cover}
 .candidate-copy strong{display:block;font-size:14px}
 .candidate-copy>span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
 .candidate-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
@@ -240,6 +248,7 @@ footer{width:min(1240px,calc(100% - 40px));margin:0 auto 30px;display:flex;justi
 .control-banner{margin-top:14px;border-radius:14px;padding:14px;background:#6D301E;color:#fff}
 .control-banner strong{display:block;font-size:13px;margin-bottom:3px}
 .control-banner span{font-size:11px;line-height:1.4;opacity:.88}
+.dashboard-note{margin:9px 2px 0;color:var(--muted);font-size:10px;line-height:1.4}
 .landing-section{padding:92px 0}
 .soft-section{background:#FFF8F5}
 .section-heading{max-width:820px;margin-bottom:40px}
@@ -289,6 +298,11 @@ footer{width:min(1240px,calc(100% - 40px));margin:0 auto 30px;display:flex;justi
 .calculator-results span{display:block;color:var(--muted);font-size:10px;margin-bottom:4px}
 .calculator-results strong{font-size:22px;color:#6D301E}
 .calculator-card small{color:var(--muted);line-height:1.45}
+.listing-ready-card{display:grid;gap:14px}
+.listing-ready-card h3{margin:0}
+.listing-ready-card ul{margin:0;padding-left:20px;color:var(--muted);font-size:14px;line-height:1.8}
+.listing-ready-card .btn{justify-self:start}
+.listing-ready-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:var(--success-soft);color:var(--success);font-size:20px;font-weight:900}
 .rules-section{padding-top:78px;padding-bottom:78px}
 .rule-strip{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:18px;overflow:hidden}
 .rule-strip>div{padding:24px;min-height:140px;border-right:1px solid var(--line);background:#fff}
@@ -317,7 +331,7 @@ footer{width:min(1240px,calc(100% - 40px));margin:0 auto 30px;display:flex;justi
   .landing-links{display:none}
   .landing-hero-grid,.control-grid,.pricing-grid,.faq-grid{grid-template-columns:1fr}
   .landing-card-grid,.journey-steps{grid-template-columns:repeat(2,1fr)}
-  .investor-dashboard{transform:none;max-width:680px}
+  .landlord-dashboard{transform:none;max-width:680px}
   .pricing-grid{gap:36px}
 }
 @media(max-width:720px){

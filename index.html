@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="HousingAnywhere concept landing page for private investors with 1–12 rental properties." />
-  <title>HousingAnywhere — Rent out your property without the second job</title>
+  <meta name="description" content="Create a HousingAnywhere property listing, reach international tenants and review bookings online." />
+  <title>HousingAnywhere — List your property online</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="landing-page">
@@ -35,7 +35,7 @@
     <section class="landing-hero">
       <div class="landing-container landing-hero-grid">
         <div class="landing-hero-copy">
-          <span class="audience-badge">For private investors with 1–12 properties</span>
+          <span class="audience-badge">For landlords</span>
           <h1>Your rental property shouldn't become your second job.</h1>
           <p>Reach international students and professionals, screen applicants digitally, manage the booking online and keep the final tenant decision in your hands.</p>
           <div class="hero-cta-row">
@@ -49,13 +49,13 @@
           </div>
         </div>
 
-        <div class="investor-dashboard" aria-label="Prototype landlord dashboard">
+        <div class="landlord-dashboard" aria-label="Illustrative landlord dashboard with sample renter profiles">
           <div class="dashboard-top">
             <div>
               <span class="dashboard-kicker">Your property</span>
               <strong>Amsterdam · 1-bedroom apartment</strong>
             </div>
-            <span class="live-pill">Live</span>
+            <span class="live-pill">Example</span>
           </div>
           <div class="dashboard-summary">
             <div><span>Availability</span><strong>1 Nov</strong></div>
@@ -63,10 +63,10 @@
             <div><span>Rent</span><strong>€1,450</strong></div>
           </div>
           <div class="candidate-card featured">
-            <div class="candidate-avatar">SM</div>
+            <img class="candidate-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=80" alt="Illustrative portrait for sample renter Sofia" loading="lazy">
             <div class="candidate-copy">
               <strong>Sofia M.</strong>
-              <span>Master's student · moving from Milan</span>
+              <span>Master's student · searching in Amsterdam</span>
               <div class="candidate-tags">
                 <span>Verified ID</span>
                 <span>Enrolment</span>
@@ -76,17 +76,18 @@
             <button class="candidate-button" type="button">Review</button>
           </div>
           <div class="candidate-card muted-card">
-            <div class="candidate-avatar">JB</div>
+            <img class="candidate-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&amp;fit=crop&amp;w=160&amp;h=160&amp;q=80" alt="Illustrative portrait for sample renter Jonas" loading="lazy">
             <div class="candidate-copy">
               <strong>Jonas B.</strong>
-              <span>Young professional · relocating for work</span>
+              <span>Young professional · searching in Amsterdam</span>
             </div>
             <span class="candidate-status">New</span>
           </div>
           <div class="control-banner">
-            <strong>You stay in control.</strong>
-            <span>HousingAnywhere reduces the admin. You decide who rents your property.</span>
+            <strong>Alex (23) is looking for a home in Amsterdam.</strong>
+            <span>Illustrative renter profile. Create your listing in minutes and be ready for your next booking.</span>
           </div>
+          <p class="dashboard-note">Sofia, Jonas and Alex are fictional example profiles shown for this prototype.</p>
         </div>
       </div>
     </section>
@@ -94,9 +95,9 @@
     <section class="landing-section" id="why">
       <div class="landing-container">
         <div class="section-heading">
-          <span class="eyebrow">Built for the on-the-side investor</span>
-          <h2>Less admin. More confidence. No loss of control.</h2>
-          <p>You already have a career. Renting out a small portfolio should not require daily calls, repeated viewings and hours of manual screening.</p>
+          <span class="eyebrow">A simpler way to list</span>
+          <h2>Less admin. More confidence. You stay in control.</h2>
+          <p>Reach international tenants without relying on repeated viewings and hours of manual screening.</p>
         </div>
         <div class="landing-card-grid">
           <article class="landing-card">
@@ -134,7 +135,7 @@
           <article class="journey-step">
             <span class="step-number">01</span>
             <h3>Show us how you rent</h3>
-            <p>We identify your profile early so private investors are not pushed through a professional property-manager flow.</p>
+            <p>Create your account and tell us how you manage your rental property so we can set up your listing.</p>
           </article>
           <article class="journey-step">
             <span class="step-number">02</span>
@@ -195,35 +196,19 @@
     <section class="landing-section pricing-section" id="pricing">
       <div class="landing-container pricing-grid">
         <div class="pricing-copy">
-          <span class="eyebrow">Transparent economics</span>
-          <h2>See the cost before you commit.</h2>
-          <p>Listing is free. Commission is charged after a successful booking and is based on the total contract value. The exact rate depends on property location.</p>
-          <div class="pricing-note">
-            <strong>Standard rates</strong>
-            <span>Netherlands & France: 5% of total contract value. Other markets: standard rate 8%, plus VAT where applicable.</span>
-          </div>
+          <span class="eyebrow">Clear from the start</span>
+          <h2>Review your listing before it goes live.</h2>
+          <p>Add the property details, costs and availability tenants need. At the final review, check the applicable booking terms before you publish.</p>
         </div>
-        <div class="calculator-card">
-          <h3>Estimate your booking</h3>
-          <label>Property location
-            <select id="calcMarket">
-              <option value="0.05">Netherlands or France</option>
-              <option value="0.08">Other market</option>
-            </select>
-          </label>
-          <div class="calculator-two">
-            <label>Monthly rent (€)
-              <input id="calcRent" type="number" min="1" value="1450">
-            </label>
-            <label>Rental period (months)
-              <input id="calcMonths" type="number" min="1" max="24" value="7">
-            </label>
-          </div>
-          <div class="calculator-results">
-            <div><span>Total contract value</span><strong id="calcContract">€10,150</strong></div>
-            <div><span>Estimated commission*</span><strong id="calcFee">€508</strong></div>
-          </div>
-          <small>*Illustration before VAT and any applicable minimum commission. Exact commission is shown in the landlord account.</small>
+        <div class="calculator-card listing-ready-card">
+          <span class="listing-ready-icon" aria-hidden="true">✓</span>
+          <h3>Your listing, ready to review</h3>
+          <ul>
+            <li>Property details and room photos</li>
+            <li>Rent, other costs and available dates</li>
+            <li>Tenant requirements and booking terms</li>
+          </ul>
+          <a class="btn btn-primary btn-large" href="onboarding.html">Start your listing</a>
         </div>
       </div>
     </section>
@@ -252,8 +237,8 @@
         </div>
         <div class="faq-list">
           <details open>
-            <summary>Is it free to publish a listing?</summary>
-            <p>Yes. HousingAnywhere charges commission when you receive a successful booking rather than an upfront listing fee.</p>
+            <summary>When can I review the booking terms?</summary>
+            <p>You can complete your listing and review the applicable booking terms before you publish.</p>
           </details>
           <details>
             <summary>Do I lose control over tenant selection?</summary>
@@ -276,11 +261,11 @@
         <div>
           <span class="eyebrow">Your property. Your decision. Less admin.</span>
           <h2>Turn your next vacancy into a digital booking.</h2>
-          <p>Start with a guided listing built specifically for private investors managing property alongside another career.</p>
+          <p>Start with a guided account setup and create a clear listing for your property.</p>
         </div>
         <div class="final-cta-actions">
           <a class="btn btn-primary btn-large" href="onboarding.html">List my property</a>
-          <span>Free to list · pay on successful booking</span>
+          <span>Free to list · keep the final decision in your hands</span>
         </div>
       </div>
     </section>
@@ -301,6 +286,6 @@
     </div>
   </footer>
 
-  <script src="landing.js"></script>
+  <script src="landing.js?v=2"></script>
 </body>
 </html>
